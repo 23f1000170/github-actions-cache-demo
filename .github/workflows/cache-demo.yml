@@ -1,7 +1,7 @@
 name: Dependency Cache Demo
 
 on:
-  workflow_dispatch:   # Lets you run it manually with a button
+  workflow_dispatch:
   push:
 
 jobs:
@@ -16,8 +16,8 @@ jobs:
         id: cache-step
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip          # What folder to cache
-          key: cache-75a50e4          # The exact cache key required
+          path: ~/.cache/pip
+          key: cache-75a50e4
 
       - name: Show cache result
         run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
