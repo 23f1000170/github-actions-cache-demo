@@ -1,0 +1,23 @@
+name: Dependency Cache Demo
+
+on:
+  workflow_dispatch:   # Lets you run it manually with a button
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: prime-cache-75a50e4
+        id: cache-step
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip          # What folder to cache
+          key: cache-75a50e4          # The exact cache key required
+
+      - name: Show cache result
+        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
